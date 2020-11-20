@@ -1,0 +1,64 @@
+<div id="new-product-section">
+	<h3>Add a new Product</h3>
+	<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+		<h5 *ngIf="success">New product added</h5>
+
+		<label>
+			Name:
+			<input type="text" formControlName="name">
+			<div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+				<div *ngIf="messageForm.controls.name.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Price:
+			<input type="number" formControlName="price">
+			<div *ngIf="submitted && messageForm.controls.price.errors" class="error">
+				<div *ngIf="messageForm.controls.price.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Info:
+			<input type="text" formControlName="info">
+			<div *ngIf="submitted && messageForm.controls.info.errors" class="error">
+				<div *ngIf="messageForm.controls.info.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Image url:
+			<input type="text" formControlName="img">
+			<div *ngIf="submitted && messageForm.controls.img.errors" class="error">
+				<div *ngIf="messageForm.controls.img.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Delivery Price:
+			<input type="number" formControlName="deliveryPrice">
+			<div *ngIf="submitted && messageForm.controls.deliveryPrice.errors" class="error">
+				<div *ngIf="messageForm.controls.deliveryPrice.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Delivery Time:
+			<input type="number" formControlName="deliveryTime">
+			<div *ngIf="submitted && messageForm.controls.deliveryTime.errors" class="error">
+				<div *ngIf="messageForm.controls.deliveryTime.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Rating:
+			<input type="number" formControlName="rating">
+			<div *ngIf="submitted && messageForm.controls.rating.errors" class="error">
+				<div *ngIf="messageForm.controls.rating.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<input type="submit" value="Send message" class="cta">
+	</form>
+</div>

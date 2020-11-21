@@ -39,6 +39,12 @@ export class ProductDataService {
 		return arrayOfProducts;
 	}
 
+	getProduct(id: number) {
+		var products = this.getProducts();
+		let lastProduct = products.find(product => product.getId() === id);
+		return lastProduct;
+	}
+
 	getLastId(): number {
 		var products = this.getProducts();
 		let lastProduct = products[products.length - 1];
@@ -62,6 +68,18 @@ export class ProductDataService {
 			this.saveProducts(products);
 		} else {
 			console.log("Did not find product with id: ", id);
+		}
+	}
+
+	updateProduct(product: Product) {
+		var products = this.getProducts();
+		let indexToEdit = products.findIndex(p => p.getId() === product.getId());
+		if (indexToEdit !== -1) {
+			products.splice(indexToEdit, 1);
+			products.push(product);
+			this.saveProducts(products);
+		} else {
+			console.log("Did not find product with id: ", product.getId());
 		}
 	}
 }

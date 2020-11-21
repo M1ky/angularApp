@@ -1,1 +1,56 @@
-<p>edit-product works!</p>
+<div id="edit-product-section">
+	<h3>Edit Product</h3>
+	<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+		<h5 *ngIf="success">Product successfully edited</h5>
+
+		<label>
+			Name:
+			<input type="text" formControlName="name" [(ngModel)]="product.name">
+			<div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+				<div *ngIf="messageForm.controls.name.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Price:
+			<input type="number" formControlName="price" [(ngModel)]="product.price">
+			<div *ngIf="submitted && messageForm.controls.price.errors" class="error">
+				<div *ngIf="messageForm.controls.price.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Info:
+			<input type="text" formControlName="info" [(ngModel)]="product.info">
+			<div *ngIf="submitted && messageForm.controls.info.errors" class="error">
+				<div *ngIf="messageForm.controls.info.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Image url:
+			<input type="text" formControlName="img" [(ngModel)]="product.img">
+			<div *ngIf="submitted && messageForm.controls.img.errors" class="error">
+				<div *ngIf="messageForm.controls.img.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Delivery Price:
+			<input type="number" formControlName="deliveryPrice" [(ngModel)]="product.deliveryPrice">
+			<div *ngIf="submitted && messageForm.controls.deliveryPrice.errors" class="error">
+				<div *ngIf="messageForm.controls.deliveryPrice.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<label>
+			Delivery Time:
+			<input type="number" formControlName="deliveryTime" [(ngModel)]="product.deliveryTime">
+			<div *ngIf="submitted && messageForm.controls.deliveryTime.errors" class="error">
+				<div *ngIf="messageForm.controls.deliveryTime.errors.required">The input is required</div>
+			</div>
+		</label>
+
+		<input type="submit" value="Submit" class="cta">
+	</form>
+</div>

@@ -23,7 +23,7 @@
 				<td>{{ product.getDeliveryPrice() }}</td>
 				<td>{{ product.getDeliveryTime() }}</td>
 				<td>
-					<a href="/edit/{{ product.getId() }}" type="button" class="btn btn-success btn-sm"
+					<a routerLink="/edit/{{ product.getId() }}" type="button" class="btn btn-success btn-sm"
 						(click)="editItem(product.getId())">Edit</a>
 					<a type="button" class="btn btn-danger btn-sm" (click)="deleteItem(product.getId())">Delete</a>
 				</td>

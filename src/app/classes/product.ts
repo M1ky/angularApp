@@ -1,11 +1,11 @@
 export class Product {
-	private id: number;
-	private name: string;
-	private price: number;
-	private info: string;
-	private img: string;
-	private deliveryPrice?: number;
-	private deliveryTime?: number;
+	id: number;
+	name: string;
+	price: number;
+	info: string;
+	img: string;
+	deliveryPrice?: number;
+	deliveryTime?: number;
 
 	constructor
 		(

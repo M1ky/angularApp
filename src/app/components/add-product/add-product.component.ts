@@ -22,7 +22,6 @@ export class AddProductComponent implements OnInit {
 			img: ['', Validators.required],
 			deliveryPrice: ['', Validators.pattern("^[0-9]*$")],
 			deliveryTime: ['', Validators.pattern("^[0-9]*$")],
-			rating: ['', Validators.pattern("^[0-5]*$")],
 		});
 	}
 

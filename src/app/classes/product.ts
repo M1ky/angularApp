@@ -1,25 +1,32 @@
 export class Product {
+	private id: number;
 	private name: string;
 	private price: number;
 	private info: string;
 	private img: string;
 	private deliveryPrice?: number;
 	private deliveryTime?: number;
-	private rating?: number;
 
 	constructor
 		(
-			name: string, price: number, info: string,
-			img: string, deliveryPrice?: number, deliveryTime?: number,
-			rating?: number
+			id: number, name: string, price: number, info: string,
+			img: string, deliveryPrice?: number, deliveryTime?: number
 		) {
+		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.info = info;
 		this.img = img;
 		this.deliveryPrice = deliveryPrice;
 		this.deliveryTime = deliveryTime;
-		this.rating = rating;
+	}
+
+	public getId(): number {
+		return this.id;
+	}
+
+	public setId(id: number): void {
+		this.id = id;
 	}
 
 	public getName(): string {
@@ -69,16 +76,4 @@ export class Product {
 	public setDeliveryTime(deliveryTime: number): void {
 		this.deliveryTime = deliveryTime;
 	}
-
-	public getRating() {
-		return this.rating;
-	}
-
-	public setRating(rating: number): void {
-		this.rating = rating;
-	}
-
-
-
-
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductDataService } from '../../services/product-data.service';
+import { Product } from '../../classes/product';
 
 @Component({
 	selector: 'products',
@@ -8,7 +9,7 @@ import { ProductDataService } from '../../services/product-data.service';
 })
 export class ProductsComponent implements OnInit {
 
-	products = this.data.getProducts();
+	products: Array<Product> = this.data.getProducts();
 
 	constructor(private data: ProductDataService) {
 		console.log(this.products);
@@ -17,4 +18,17 @@ export class ProductsComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
+	editItem(productId: number) {
+		console.log(productId);
+	}
+
+	deleteItem(productId: number) {
+		console.log(productId);
+		this.data.deleteItem(productId);
+		this.reloadData();
+	}
+
+	reloadData() {
+		this.products = this.data.getProducts();
+	}
 }

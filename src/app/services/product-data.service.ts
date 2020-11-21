@@ -9,25 +9,59 @@ export class ProductDataService {
 	public static PRODUCTS: string = "products";
 
 	constructor() {
-		var staticProducts = [
-			new Product("Buty adidas", 90, "Buty do biegania, białe", "https://www.pinterest.com/pin/349310514842123368/"),
-			new Product("Buty nike", 100, "Buty czarne nike do biegania", "https://www.indiamart.com/proddetail/nike-airmax-2017-nike-shoe-11543792212.html"),
+		var staticProducts: Array<Product> = [
+			new Product(1, "Buty adidas", 90, "Buty do biegania, białe", "img1", 15, 3),
+			new Product(2, "Buty nike", 100, "Buty czarne nike do biegania", "img2", 10, 3),
 		];
 
-		localStorage.setItem(ProductDataService.PRODUCTS, JSON.stringify(staticProducts));
+		sessionStorage.setItem(ProductDataService.PRODUCTS, JSON.stringify(staticProducts));
 	}
 
 	addProduct(product: Product) {
 		try {
-			var products = JSON.parse(localStorage.getItem(ProductDataService.PRODUCTS) || '{}');
+			var products = JSON.parse(sessionStorage.getItem(ProductDataService.PRODUCTS) || '{}');
 			products.push(product);
-			localStorage.setItem(ProductDataService.PRODUCTS, JSON.stringify(products));
+			sessionStorage.setItem(ProductDataService.PRODUCTS, JSON.stringify(products));
 		} catch (e) {
-			console.error('Error saving to localStorage', e);
+			console.error('Error saving to sessionStorage', e);
 		}
 	}
 
-	getProducts() {
-		return JSON.parse(localStorage.getItem(ProductDataService.PRODUCTS) || '{}');
+	getProducts(): Array<Product> {
+		var arrayOfObjects = JSON.parse(sessionStorage.getItem(ProductDataService.PRODUCTS) || '{}') as Array<any>;
+		var arrayOfProducts: Array<Product> = [];
+
+		arrayOfObjects.forEach(e => {
+			var product = new Product(e.id, e.name, e.price, e.info, e.img, e.deliveryPrice, e.deliveryTime);
+			arrayOfProducts.push(product);
+		});
+
+		return arrayOfProducts;
+	}
+
+	getLastId(): number {
+		var products = this.getProducts();
+		let lastProduct = products[products.length - 1];
+		return lastProduct.getId();
+	}
+
+	saveProducts(products: Array<Product>) {
+		try {
+			sessionStorage.setItem(ProductDataService.PRODUCTS, JSON.stringify(products));
+		} catch (e) {
+			console.error('Error saving to sessionStorage', e);
+		}
+	}
+
+	deleteItem(id: number) {
+		let products = this.getProducts();
+		let index = products.findIndex(product => product.getId() === id);
+
+		if (index !== -1) {
+			products.splice(index, 1);
+			this.saveProducts(products);
+		} else {
+			console.log("Did not find product with id: ", id);
+		}
 	}
 }

@@ -4,11 +4,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductDataService } from '../../services/product-data.service';
 
 @Component({
-	selector: 'app-add-product-form',
-	templateUrl: './add-product-form.component.html',
-	styleUrls: ['./add-product-form.component.scss']
+	selector: 'app-add-product',
+	templateUrl: './add-product.component.html',
+	styleUrls: ['./add-product.component.scss']
 })
-export class AddProductFormComponent implements OnInit {
+export class AddProductComponent implements OnInit {
 
 	messageForm: FormGroup;
 	submitted = false;
@@ -17,7 +17,7 @@ export class AddProductFormComponent implements OnInit {
 	constructor(private data: ProductDataService, private formBuilder: FormBuilder) {
 		this.messageForm = this.formBuilder.group({
 			name: ['', Validators.required],
-			price: ['', Validators.required, Validators.pattern("^[0-9]*$")],
+			price: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
 			info: ['', Validators.required],
 			img: ['', Validators.required],
 			deliveryPrice: ['', Validators.pattern("^[0-9]*$")],
@@ -32,14 +32,15 @@ export class AddProductFormComponent implements OnInit {
 		if (this.messageForm.invalid) {
 			return;
 		}
-
 		this.success = true;
 		this.addNewProduct();
 	}
 
 	addNewProduct() {
-		var values = this.messageForm.value;
-		var product = new Product(values.name, values.price, values.info, values.img, values.deliveryPrice, values.deliveryTime, values.rating);
+		var v = this.messageForm.value;
+		var product = new Product(this.data.getLastId() + 1, v.name, v.price, v.info, v.img, v.deliveryPrice, v.deliveryTime);
+		console.log('here');
+		console.log(product);
 		this.data.addProduct(product);
 	}
 

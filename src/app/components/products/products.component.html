@@ -1,25 +1,27 @@
 <div>
 	<h1>Products</h1>
+	<p>Sort by: </p>
 	<table class="table table-dark">
 		<thead>
 			<tr class="text-uppercase">
-				<td>Nr</td>
-				<td>Name</td>
-				<td>Price [PLN]</td>
-				<td>Info</td>
-				<td>Img</td>
-				<td>Delivery Price</td>
-				<td>Delivery Time [Days]</td>
-				<td>Actions</td>
+				<th (click)="sort('id')">Nr <i class="fa fa-sort"></i></th>
+				<th (click)="sort('name')">Name <i class="fa fa-sort"></i></th>
+				<th (click)="sort('price')">Price [PLN] <i class=" fa fa-sort"></i></th>
+				<th>Info</th>
+				<th>Img</th>
+				<th>Delivery Price</th>
+				<th>Delivery Time [Days]</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let product of products">
+			<!-- <tr *ngFor="let product of products|sort:direction:column:type"> -->
+			<tr *ngFor="let product of products | orderBy: key: reverse">
 				<td>{{ product.getId() }}</td>
 				<td>{{ product.getName() }}</td>
 				<td>{{ product.getPrice() }}</td>
 				<td>{{ product.getInfo() }}</td>
-				<td>{{ product.getImg() }}</td>
+				<td><img src="{{product.getImg()}}" height="100px" /></td>
 				<td>{{ product.getDeliveryPrice() }}</td>
 				<td>{{ product.getDeliveryTime() }}</td>
 				<td>

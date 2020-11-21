@@ -8,6 +8,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { NavComponent } from './components/nav/nav.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		OrderModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

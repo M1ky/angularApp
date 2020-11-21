@@ -10,8 +10,8 @@ export class ProductDataService {
 
 	constructor() {
 		var staticProducts: Array<Product> = [
-			new Product(1, "Buty adidas", 90, "Buty do biegania, białe", "img1", 15, 3),
-			new Product(2, "Buty nike", 100, "Buty czarne nike do biegania", "img2", 10, 3),
+			new Product(1, "Buty adidas", 90, "Buty do biegania, białe", "http://www.w3schools.com/css/img_fjords.jpg", 15, 3),
+			new Product(2, "Buty nike", 100, "Buty czarne nike do biegania", "https://www.w3schools.com/css/img_forest.jpg", 10, 3),
 		];
 
 		sessionStorage.setItem(ProductDataService.PRODUCTS, JSON.stringify(staticProducts));

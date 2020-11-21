@@ -31,4 +31,12 @@ export class ProductsComponent implements OnInit {
 	reloadData() {
 		this.products = this.data.getProducts();
 	}
+
+	key: string = 'id';
+	reverse: boolean = false;
+
+	sort(key: string) {
+		this.key = key;
+		this.reverse = !this.reverse;
+	}
 }

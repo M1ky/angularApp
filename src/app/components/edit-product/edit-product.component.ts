@@ -14,6 +14,8 @@ export class EditProductComponent implements OnInit {
 	messageForm: FormGroup;
 	submitted = false;
 	success = false;
+	displayMainContent = true;
+
 
 	constructor(private productService: ProductDataService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
 		this.messageForm = this.formBuilder.group({
@@ -56,6 +58,7 @@ export class EditProductComponent implements OnInit {
 		}
 		this.success = true;
 		this.editProduct();
+		this.displayMainContent = false;
 	}
 
 	editProduct() {

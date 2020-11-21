@@ -13,6 +13,7 @@ export class AddProductComponent implements OnInit {
 	messageForm: FormGroup;
 	submitted = false;
 	success = false;
+	displayMainContent = true;
 
 	constructor(private data: ProductDataService, private formBuilder: FormBuilder) {
 		this.messageForm = this.formBuilder.group({
@@ -33,6 +34,7 @@ export class AddProductComponent implements OnInit {
 		}
 		this.success = true;
 		this.addNewProduct();
+		this.displayMainContent = false;
 	}
 
 	addNewProduct() {

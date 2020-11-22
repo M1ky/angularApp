@@ -10,8 +10,10 @@ export class ProductDataService {
 
 	constructor() {
 		var staticProducts: Array<Product> = [
-			new Product(1, "Buty adidas", 90, "Buty do biegania, białe", "http://www.w3schools.com/css/img_fjords.jpg", 15, 3),
-			new Product(2, "Buty nike", 100, "Buty czarne nike do biegania", "https://www.w3schools.com/css/img_forest.jpg", 10, 3),
+			new Product(1, "Czysty kod", 90, "Autor: Bob Martin, Książka o programowaniu", "https://ecsmedia.pl/c/czysty-kod-podrecznik-dobrego-programisty-b-iext43256635.jpg", 15, 3),
+			new Product(2, "Czysta architektura", 100, "Autor: Bob Martin, Książka o architekturze", "https://ecsmedia.pl/c/czysta-architektura-struktura-i-design-oprogramowania-przewodnik-dla-profesjonalistow-b-iext52687780.jpg", 10, 3),
+			new Product(3, "Thinking in Java", 150, "Autor: Bruce Eckel, Książka o Javie", "https://www.enbook.pl//media/catalog/product/cache/3/thumbnail/140x220/9df78eab33525d08d6e5fb8d27136e95/i/m/img9780131872486.jpg", 20, 4),
+			new Product(4, "HTML i CSS", 75, "Autor: Jon Duckett, Książka o front-end", "https://ecsmedia.pl/c/html-i-css-zaprojektuj-i-zbuduj-witryne-www-podrecznik-front-end-developera-w-iext52899159.jpg", 0, 7)
 		];
 
 		sessionStorage.setItem(ProductDataService.PRODUCTS, JSON.stringify(staticProducts));

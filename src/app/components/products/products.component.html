@@ -1,6 +1,15 @@
 <div>
-	<h1>Products</h1>
-	<p>Sort by: </p>
+	<section id="filters">
+		<label class="filter-elem" for="filter-greater-then">Price greater then </label>
+		<input class="filter-elem" id="filter-greater-then" type="number" placeholder="Price greater then"
+			[(ngModel)]="greaterThen" />
+
+		<label class="filter-elem" for="filter-lesser-then">Price lesser then </label>
+		<input class="filter-elem" id="filter-lesser-then" type="number" placeholder="Price lesser then"
+			[(ngModel)]="lesserThen" />
+
+		<button class="filter-elem" (click)="resetFilter()">Reset Filter</button>
+	</section>
 	<table class="table table-dark">
 		<thead>
 			<tr class="text-uppercase">
@@ -9,14 +18,13 @@
 				<th (click)="sort('price')">Price [PLN] <i class=" fa fa-sort"></i></th>
 				<th>Info</th>
 				<th>Img</th>
-				<th>Delivery Price</th>
-				<th>Delivery Time [Days]</th>
+				<th (click)="sort('deliveryPrice')">Delivery Price <i class=" fa fa-sort"></i></th>
+				<th (click)="sort('deliveryTime')">Delivery Time [Days] <i class=" fa fa-sort"></i></th>
 				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
-			<!-- <tr *ngFor="let product of products|sort:direction:column:type"> -->
-			<tr *ngFor="let product of products | orderBy: key: reverse">
+			<tr *ngFor="let product of filteredProducts | orderBy: key: reverse">
 				<td>{{ product.getId() }}</td>
 				<td>{{ product.getName() }}</td>
 				<td>{{ product.getPrice() }}</td>

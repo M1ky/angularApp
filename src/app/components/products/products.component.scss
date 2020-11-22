@@ -3,3 +3,15 @@ div {
   margin: 0 0;
   padding: 0;
 }
+
+#filters {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 5px;
+}
+
+.filter-elem {
+  margin-left: 5px;
+}

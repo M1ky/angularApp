@@ -10,6 +10,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { FormsModule } from '@angular/forms';
+import { GreaterThenFilterPipe } from './pipes/greater-then-filter.pipe';
+import { LesserThenFilterPipe } from './pipes/lesser-then-filter.pipe';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { FormsModule } from '@angular/forms';
 		ProductsComponent,
 		NavComponent,
 		AddProductComponent,
-		EditProductComponent
+		EditProductComponent,
+		GreaterThenFilterPipe,
+		LesserThenFilterPipe,
 	],
 	imports: [
 		BrowserModule,

@@ -8,7 +8,7 @@
 		<input class="filter-elem" id="filter-lesser-then" type="number" placeholder="Price lesser then"
 			[(ngModel)]="lesserThen" />
 
-		<button class="filter-elem" (click)="resetFilter()">Reset Filter</button>
+		<button class="filter-elem" (click)="resetFilter()" [(ngModel)]="isReset">Reset Filter</button>
 	</section>
 	<table class="table table-dark">
 		<thead>
@@ -24,7 +24,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let product of filteredProducts | orderBy: key: reverse">
+			<tr
+				*ngFor="let product of products | orderBy: key: reverse | greaterThenFilter: greaterThen: isReset | lesserThenFilter: lesserThen: isReset">
 				<td>{{ product.getId() }}</td>
 				<td>{{ product.getName() }}</td>
 				<td>{{ product.getPrice() }}</td>

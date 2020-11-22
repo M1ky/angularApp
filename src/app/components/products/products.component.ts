@@ -11,10 +11,10 @@ import { ThisReceiver } from '@angular/compiler';
 export class ProductsComponent implements OnInit {
 
 	products: Array<Product> = [];
-	filteredProducts: Array<Product> = [];
 
 	private _greaterThen: number = 0;
 	private _lesserThen: number = 0;
+	private _isReset: boolean = false;
 
 	constructor(private data: ProductDataService) {
 		console.log(this.products);
@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.products = this.data.getProducts();
-		this.filteredProducts = this.data.getProducts();
+		this._isReset = true;
 	}
 
 	get greaterThen(): number {
@@ -31,17 +31,7 @@ export class ProductsComponent implements OnInit {
 
 	set greaterThen(value: number) {
 		this._greaterThen = value;
-		this.filteredProducts = this.filterProductsGreaterThen(value);
-	}
-
-	filterProductsGreaterThen(value: number) {
-		let filteredProducts = [];
-		for (let i = 0; i < this.products.length; i++) {
-			if (this.products[i].getPrice() >= value) {
-				filteredProducts.push(this.products[i]);
-			}
-		}
-		return filteredProducts
+		this._isReset = false;
 	}
 
 	get lesserThen(): number {
@@ -50,23 +40,21 @@ export class ProductsComponent implements OnInit {
 
 	set lesserThen(value: number) {
 		this._lesserThen = value;
-		this.filteredProducts = this.filterProductsLesserThen(value);
+		this._isReset = false;
 	}
 
-	filterProductsLesserThen(value: number) {
-		let filteredProducts = [];
-		for (let i = 0; i < this.products.length; i++) {
-			if (this.products[i].getPrice() <= value) {
-				filteredProducts.push(this.products[i]);
-			}
-		}
-		return filteredProducts
+	get isReset(): boolean {
+		return this._isReset;
+	}
+
+	set isReset(value: boolean) {
+		this._isReset = value;
 	}
 
 	resetFilter() {
 		this._greaterThen = 0;
 		this._lesserThen = 0;
-		this.filteredProducts = this.products;
+		this._isReset = true;
 	}
 
 	editItem(productId: number) {

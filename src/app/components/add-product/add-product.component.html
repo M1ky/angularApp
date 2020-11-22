@@ -16,7 +16,8 @@
 				Price:
 				<input type="number" formControlName="price">
 				<div *ngIf="submitted && messageForm.controls.price.errors" class="error">
-					<div *ngIf="messageForm.controls.price.errors.required">The input is required</div>
+					<div *ngIf="messageForm.controls.price.errors.required">The input is required, and it must be a
+						number</div>
 				</div>
 			</label>
 

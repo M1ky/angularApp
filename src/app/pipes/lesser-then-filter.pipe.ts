@@ -10,13 +10,13 @@ export class LesserThenFilterPipe implements PipeTransform {
 			return value;
 		}
 
-		var greaterThan = [];
+		var lesserThen = [];
 		for (let i = 0; i < value.length; i++) {
 			if (value[i].getPrice() <= args[0]) {
-				greaterThan.push(value[i]);
+				lesserThen.push(value[i]);
 			}
 		}
-		return greaterThan;
+		return lesserThen;
 	}
 
 }
